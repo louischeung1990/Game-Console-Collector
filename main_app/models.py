@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Console(models.Model):
@@ -9,3 +10,6 @@ class Console(models.Model):
 
     def __str__(self):
         return f"A {self.brand} {self.name} from {self.year}, {self.description}"
+
+    def get_absolute_url(self):
+        return reverse('detail', kwargs={'console_id': self.id})

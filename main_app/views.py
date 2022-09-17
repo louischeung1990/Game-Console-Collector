@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Console
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # Create your views here.
 def home(request):
@@ -15,3 +16,15 @@ def consoles_index(request):
 def console_detail(request, console_id):
     console = Console.objects.get(id=console_id)
     return render(request, 'consoles/detail.html', { 'console' : console })
+
+class ConsoleCreate(CreateView):
+    model = Console
+    fields = '__all__'
+    
+class ConsoleUpdate(UpdateView):
+    model = Console
+    fields = ['description']
+
+class ConsoleDelete(DeleteView):
+    model = Console
+    success_url = '/consoles/'

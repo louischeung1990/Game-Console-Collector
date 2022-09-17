@@ -11,6 +11,10 @@
         <p>Description: {{ console.description }}</p>
         <p>Release year: {{ console.year }}</p>
     </div>
+    <div class="card-action">
+        <a href="{% url 'console_update' console.id %}">Update</a>
+        <a href="{% url 'console_delete' console.id %}">Delete</a>
+    </div>
 </div>
 
 {% endblock %}
