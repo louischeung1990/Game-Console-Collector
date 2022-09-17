@@ -1,17 +1,16 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 
 <h1>Game Console List</h1>
 
 {% for console in consoles %}
-  <div class="card">
+<div class="card">
+  <a href="{% url 'detail' console.id %}">
     <div class="card-content">
-        <span class="card-title">{{ console.name }}</span>
-        <p>Brand: {{ console.brand }}</p>
-        <p>Description: {{ console.description }}</p>
-        <p>Release Year: {{ console.year }}</p>
+      <span class="card-title">{{ console.name }}</span>
+      <p>Brand: {{ console.brand }}</p>
+      <p>Description: {{ console.description }}</p>
+      <p>Release Year: {{ console.year }}</p>
     </div>
-  </div>
-{% endfor %}
-
-{% endblock %}
+  </a>
+</div>
+{% endfor %} {% endblock %}

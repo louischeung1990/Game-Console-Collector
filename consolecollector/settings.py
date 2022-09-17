@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'consolecollector.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'catcollector',
+        'NAME': 'consolecollector',
         'USER': 'postgres',
         'PASSWORD': 'password',
     }

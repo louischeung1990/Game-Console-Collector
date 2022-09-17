@@ -1,17 +1,5 @@
 from django.shortcuts import render
-
-class Console:
-    def __init__(self, name, brand, description, year):
-        self.name = name
-        self.brand = brand
-        self.description = description
-        self.year = year
-
-consoles = [
-    Console('N64', 'Nintendo', 'mint condition', 1996),
-    Console('Dreamcast', 'Sega', 'scratched', 1998),
-    Console('PlayStation 2', 'Sony', 'good condition', 2000),
-]
+from .models import Console
 
 # Create your views here.
 def home(request):
@@ -21,4 +9,9 @@ def about(request):
     return render(request, 'about.html')
 
 def consoles_index(request):
+    consoles = Console.objects.all()
     return render(request, 'consoles/index.html', {'consoles' : consoles})
+
+def console_detail(request, console_id):
+    console = Console.objects.get(id=console_id)
+    return render(request, 'consoles/detail.html', { 'console' : console })
