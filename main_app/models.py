@@ -1,3 +1,4 @@
+from unicodedata import name
 from django.db import models
 from django.urls import reverse
 
@@ -8,11 +9,23 @@ ACCESSORIES = (
 )
 
 # Create your models here.
+class Game(models.Model):
+    name = models.CharField(max_length=100)
+    genre = models.CharField(max_length=50)
+    release_year = models.IntegerField('Release Year')
+
+    def __str__(self):
+        return f"{self.name} is a {self.genre} type of game released in {self.release_year}"
+
+    def get_absolute_url(self):
+        return reverse('game_detail', kwargs={'pk':self.id})
+
 class Console(models.Model):
     name = models.CharField(max_length=100)
     brand = models.CharField(max_length=100)
     description = models.TextField(max_length=250)
     year = models.IntegerField()
+    games = models.ManyToManyField(Game)
 
     def __str__(self):
         return f"A {self.brand} {self.name} from {self.year}, {self.description}"

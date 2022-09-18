@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Game Details</h1>
+
+<div class="row">
+  <div class="col s6 col-offset-3">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ game.name }}</span>
+        <p>Genre: {{ game.genre }}</p>
+        <p>Release Year: {{ game.release_year }}</p>
+      </div>
+      <div class="card-action">
+        <a href="{% url 'game_update' game.id %}">Edit</a>
+        <a href="{% url 'game_delete' game.id %}">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
