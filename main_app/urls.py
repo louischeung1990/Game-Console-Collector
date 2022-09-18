@@ -9,4 +9,5 @@ urlpatterns = [
     path('consoles/create/', views.ConsoleCreate.as_view(), name='console_create'),
     path('consoles/<int:pk>/update/', views.ConsoleUpdate.as_view(), name="console_update"),
     path('consoles/<int:pk>/delete/', views.ConsoleDelete.as_view(), name="console_delete"),
+    path('consoles/<int:console_id>/add_accessory', views.add_accessory, name='add_accessory'),
 ]
