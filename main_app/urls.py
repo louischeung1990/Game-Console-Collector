@@ -21,4 +21,6 @@ urlpatterns = [
     path('games/<int:pk>/delete', views.GameDelete.as_view(), name='game_delete'),
     path('consoles/<int:console_id>/assoc_game/<int:game_id>/', views.assoc_game, name="assoc_game"),
     path('consoles/<int:console_id>/unassoc_game/<int:game_id>/', views.unassoc_game, name="unassoc_game"),
+    # Signup Route
+    path('accounts/signup/', views.signup, name='signup'),
 ]

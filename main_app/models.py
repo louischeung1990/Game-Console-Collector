@@ -1,6 +1,6 @@
-from unicodedata import name
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 ACCESSORIES = (
     ('C', 'Controller'),
@@ -26,6 +26,7 @@ class Console(models.Model):
     description = models.TextField(max_length=250)
     year = models.IntegerField()
     games = models.ManyToManyField(Game)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"A {self.brand} {self.name} from {self.year}, {self.description}"
